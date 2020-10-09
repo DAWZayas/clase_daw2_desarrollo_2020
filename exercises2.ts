@@ -11,11 +11,30 @@ dropUntil([1, 3, 6, 4, 5], pair); // [6,4,5]
 // implementar take con takeWhile
 // implementar drop con dropUntil
 
-odd = not(pair);
+function not<A>(p: (x: A) => boolean): (x: A) => boolean {
+    return function (x: A) {
+        return !p(x);
+    }
+}
+
+var odd = not(pair);
+
+function odd2(x: number) {
+    return x % 2 !== 0;
+}
+
+function odd3(x: number) {
+    return !pair(x)
+}
+
+
+// High order functions
 
 odd(1); // true
 odd(2); // false
 
-flippedTake = flip(take);
+flippedTake(= flip(take);
 
+
+take([1, 4], 3); // [1,4]
 flippedTake(3, [1, 4]); // [1,4]

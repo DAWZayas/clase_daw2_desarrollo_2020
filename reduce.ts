@@ -15,6 +15,14 @@ function reduce<A, B>(xs: A[], f: (acc: B, x: A) => B, init: B): B {
   return acc;
 }
 
+function map<A, B>(xs: A[], f: (x: A) => B): B[] {
+  return reduce(xs, function (ys: B[], x: A) {
+    var y = f(x);
+    return ys.concat(y);
+  }, []);
+}
+
+
 /*
 reduce([1,2,3], reducer, false)
 
