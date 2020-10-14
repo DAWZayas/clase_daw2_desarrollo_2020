@@ -16,12 +16,25 @@ function reduce<A, B>(xs: A[], f: (acc: B, x: A) => B, init: B): B {
 }
 
 function map<A, B>(xs: A[], f: (x: A) => B): B[] {
-  return reduce(xs, function (ys: B[], x: A) {
-    var y = f(x);
-    return ys.concat(y);
-  }, []);
+  return reduce(
+    xs,
+    function (ys: B[], x: A) {
+      var y = f(x);
+      return ys.concat(y);
+    },
+    []
+  );
 }
 
+function filter<A>(xs: A[], p: (x: A) => boolean): A[] {
+  return reduce(
+    xs,
+    function (ys: A[], x: A) {
+      return p(x) ? ys.concat(x) : ys;
+    },
+    []
+  );
+}
 
 /*
 reduce([1,2,3], reducer, false)
