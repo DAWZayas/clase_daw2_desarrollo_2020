@@ -48,7 +48,7 @@ function reduceRight<A, B>(xs: A[], f: (acc: B, x: A) => B, init: B): B {
 }
 
 
-function init<A>(x: A): A {
+function id<A>(x: A): A {
     return x;
 }
 
@@ -58,7 +58,7 @@ function multicompose<A>(...fs: Function[]): (x:A) => any {
         return function (x: any) {
             return f(g(x));
         };
-    }, init);
+    }, id);
 }
 
 /*
